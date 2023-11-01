@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather-App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./src/script.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <div>
+        <h1>⛅Weather - App</h1>
+      </div>
+      <form class="form-container">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Search for a city..."
+        />
+        <button type="submit" class="submit-button">Search</button>
+      </form>
+
+      <!-- Weather API Datas -->
+      <div class="weather-container">
+        <div class="infos city">
+          <div class="headers">City</div>
+          <!-- <div class="weather-data">Konya</div> -->
+        </div>
+        <div class="infos country">
+          <div class="headers">Country</div>
+          <!-- <div class="weather-data">TR</div> -->
+        </div>
+        <div class="infos temp">
+          <div class="headers">Temperature</div>
+          <!-- <div class="weather-data">25</div> -->
+        </div>
+        <div class="infos desc">
+          <div class="headers">Description</div>
+          <!-- <div class="weather-data">Cloudy</div> -->
+        </div>
+        <div class="infos humidity">
+          <div class="headers">Humidity</div>
+          <!-- <div class="weather-data">30</div> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

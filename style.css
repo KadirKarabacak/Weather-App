@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Exo 2", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(src/img/blurry-gradient-haikei.svg);
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 3%;
+  background-image: linear-gradient(
+    90deg,
+    rgb(250, 205, 4),
+    rgb(255, 255, 255)
+  );
+  background-clip: text;
+  -webkit-background-clip: text; /* Webkit tarayıcıları için gerekli */
+  color: transparent;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  height: 64.1vh;
+  padding-top: 8%;
+  margin: 4% 0%;
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 2px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 2.3px 3.7px 2.3px -3px rgba(0, 0, 0, 0.031),
+    5.9px 9.3px 5.8px -3px rgba(0, 0, 0, 0.044),
+    12.1px 19px 11.9px -3px rgba(0, 0, 0, 0.056),
+    24.8px 39.1px 24.5px -3px rgba(0, 0, 0, 0.069),
+    68px 107px 67px -3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(14, 151, 89, 0.75);
+  border-radius: 12px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 2%;
+}
+
+.input-field {
+  padding: 15px;
+  width: 70%;
+  border-radius: 10px;
+  border: 1px solid skyblue;
+  margin-right: 2%;
+  transition: 0.4s;
+  font-size: 20px;
+  border-inline: none;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.submit-button {
+  padding: 10px 15px;
+  width: 30%;
+  background-color: #52ff4c;
+  color: #101010;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.submit-button:hover {
+  background-color: #101010;
+  color: white;
+}
+
+.weather-container {
+  width: 100%;
+  display: flex;
+  padding-top: 2%;
+}
+
+.infos {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 4% 0%;
+  font-size: 25px;
+  color: white;
+}
+
+.headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #101010;
+  padding-bottom: 6%;
+}
+
+.weather-data {
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
