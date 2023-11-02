@@ -56,13 +56,10 @@ const getJSONLocation = async function () {
     state.desc = data.weather[0].description;
     state.humidity = data.main.humidity;
 
-    console.log(data);
     generateMarkup();
   } catch (err) {
     renderError("Cannot find your location! Allow us.");
     setTimeOutHeader(2, 5);
-
-    console.error("Hava durumu bilgisi alinamadi", err);
   }
 };
 
