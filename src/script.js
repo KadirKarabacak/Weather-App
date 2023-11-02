@@ -4,9 +4,11 @@ const button = document.querySelector(".submit-button");
 const input = document.querySelector(".input-field");
 const h1 = document.querySelector("h1");
 const headers = document.querySelectorAll(".headers");
-
+const clock = document.querySelector(".clock-container");
+const dateContainer = document.querySelector(".date-container");
 const infos = document.querySelectorAll(".infos");
 
+// State object
 const state = {
   name: "",
   country: "",
@@ -15,10 +17,11 @@ const state = {
   humidity: "",
 };
 
-const setTimeOutHeader = function () {
+// Time out for wrong search
+const setTimeOutHeader = function (second) {
   return setTimeout(() => {
     h1.textContent = "⛅Weather - App";
-  }, 1500);
+  }, second * 1000);
 };
 
 // Get position
@@ -52,9 +55,13 @@ const getJSONLocation = async function () {
     state.temp = +(data.main.temp - 273.15).toFixed();
     state.desc = data.weather[0].description;
     state.humidity = data.main.humidity;
-    
+
+    console.log(data);
     generateMarkup();
   } catch (err) {
+    renderError("Cannot find your location! Allow us.");
+    setTimeOutHeader(2, 5);
+
     console.error("Hava durumu bilgisi alinamadi", err);
   }
 };
@@ -62,22 +69,7 @@ const getJSONLocation = async function () {
 // Get results by search :
 const getJSONSearch = async function (city) {
   try {
-    if (!city) h1.textContent = "There is no query for city!";
-    infos.forEach((el) =>
-    el.querySelectorAll(".weather-data").forEach((data) => data.remove())
-  );
-    // headers.forEach((el) =>
-    //   el.querySelectorAll(".weather-data").forEach((data) => data.remove())
-    // );
-    // headers.forEach((el) =>
-    //   el.parentElement
-    //     .querySelectorAll(".weather-data")
-    //     .forEach((data) => data.remove())
-    // );
     input.value = "";
-
-    // Turn h1 back
-    setTimeOutHeader();
 
     // Fetch API for search
     const res = await fetch(
@@ -92,11 +84,16 @@ const getJSONSearch = async function (city) {
     state.desc = data.weather[0].description;
     state.humidity = data.main.humidity;
 
+    if (!city) throw error;
+    infos.forEach((el) =>
+      el.querySelectorAll(".weather-data").forEach((data) => data.remove())
+    );
+
     // Generate markup with NEW state
     generateMarkup();
-
   } catch (err) {
-    console.error("Hava durumu bilgisi alinamadi", err);
+    renderError(`Can't find this city. Try another!`);
+    setTimeOutHeader(2);
   }
 };
 
@@ -121,7 +118,6 @@ const generateMarkup = function () {
 
   // For each header add weather-data dynamicly
 
-  
   // el.lastElementChild.classList.contains
 
   infos.forEach((el) => {
@@ -149,32 +145,42 @@ const generateMarkup = function () {
         (html = `<div class="weather-data">${state.humidity}%</div>`)
       );
   });
-
-//   headers.forEach((el) => {
-//     if (el.classList.contains("city")) el.insertAdjacentHTML("beforeend", html);
-//     else if (el.classList.contains("country"))
-//       el.insertAdjacentHTML(
-//         "beforeend",
-//         (html = `<div class="weather-data">${state.country}</div>`)
-//       );
-//     else if (el.classList.contains("temp"))
-//       el.insertAdjacentHTML(
-//         "beforeend",
-//         (html = `<div class="weather-data">${state.temp}°C</div>`)
-//       );
-//     else if (el.classList.contains("desc"))
-//       el.insertAdjacentHTML(
-//         "beforeend",
-//         (html = `<div class="weather-data">${
-//           state.desc.at(0).toUpperCase() + state.desc.slice(1)
-//         }</div>`)
-//       );
-//     else if (el.classList.contains("humidity"))
-//       el.insertAdjacentHTML(
-//         "beforeend",
-//         (html = `<div class="weather-data">${state.humidity}%</div>`)
-//       );
-//   });
 };
 
-// to calculate celcius [ temp -273.15 ]
+// Calculate Time
+const calculateTimeAndDate = function () {
+  // Get dates
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  const seconds = now.getSeconds();
+  const year = now.getFullYear();
+  const month = `${now.getMonth() + 1}`.padStart(2, 0);
+  const day = `${now.getDate()}`.padStart(2, 0);
+
+  // Markup for date
+  const markupDate = `
+  <div class="date day">${day}/${month}/${year}</div>
+  `;
+  dateContainer.querySelector(".day").innerHTML = markupDate;
+
+  // Markup for clock
+  const markupClock = `
+  <div class="clock minute">${`${hour}`.padStart(2, 0)}:${`${minute}`.padStart(
+    2,
+    0
+  )}:${`${seconds}`.padStart(2, 0)}</div>
+  `;
+  clock.querySelector(".time").innerHTML = markupClock;
+};
+calculateTimeAndDate();
+
+// Interval for clock
+const clockInterval = function () {
+  return setInterval(calculateTimeAndDate, 1000);
+};
+clockInterval();
+
+const renderError = function (err) {
+  h1.textContent = err;
+};
