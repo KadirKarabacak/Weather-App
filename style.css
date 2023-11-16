@@ -30,7 +30,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
+  width: 75%;
   height: 64.1vh;
   padding-top: 8%;
   margin: 4% 0%;
@@ -67,7 +67,7 @@ h1 {
 
 .input-field:focus {
   outline: none;
-  box-shadow: 10px 6px 66px rgba(0, 0, 0, 0.27);
+  box-shadow: 5px 8px 14px rgba(0, 0, 0, 0.27);
 }
 
 .submit-button {
@@ -181,30 +181,88 @@ h1 {
 } */
 
 /* Responsive */
-@media screen and (min-width: 112.5rem) {
+
+@media screen and (min-width: 112.5rem) { 
   .app-container {
-    width: 75%;
+    width: 60%;
     height: 65vh;
   }
 }
 
+
 @media screen and (max-width: 75rem) {
   .app-container {
-    width: 90%;
-    height: 61vh;  
+    width: 95%;
+    height: 60vh;
   }
 }
+
 
 @media screen and (max-width: 56.25rem) {
   .app-container {
-    width: 90%;
-    height: 50vh;
+    width: 95%;
+    height: 43vh;
+    margin: 10% 0%;
+  }
+
+  .infos{
+    font-size: 16px;
+  }
+
+  .weather-data{
+    font-size: 14px;
+  }
+
+  .day-container{
+    font-size: 14px;
+  }
+
+  .input-field{
+    font-size: 16px;
+  }
+
+  .submit-button{
+    font-size: 16px;
   }
 }
 
+
 @media screen and (max-width: 37.5rem) {
-  .app-container {
-    width: 90%;
-    height: 40vh;  
+
+  body{
+    justify-content: flex-start;
   }
+
+  .app-container {
+    width: 95%;
+    height: 40vh;
+  }
+
+  .infos{
+    font-size: 12px;
+  }
+
+  .weather-data{
+    font-size: 10px;
+  }
+
+  .day-container{
+    font-size: 10px;
+    width: 20%;
+  }
+
+  .input-field{
+    font-size: 11px;
+  }
+
+  .submit-button{
+    font-size: 11px;
+  }
+
+  .form-container{
+    margin-top: 1%;
+  }
+
 }
+
+
