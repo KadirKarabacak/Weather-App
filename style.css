@@ -240,6 +240,8 @@ h1 {
 
   .infos{
     font-size: 12px;
+    width: 50%;
+    flex-wrap: wrap;
   }
 
   .weather-data{
@@ -254,6 +256,7 @@ h1 {
 
   .input-field{
     font-size: 11px;
+    box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.27);
   }
 
   .submit-button{
@@ -262,6 +265,10 @@ h1 {
 
   .form-container{
     margin-top: 1%;
+  }
+
+  .app__text-head{
+    font-size: 30px;
   }
 
 }
