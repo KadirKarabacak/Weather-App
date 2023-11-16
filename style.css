@@ -7,21 +7,20 @@
 }
 
 body {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url(src/img/blurry-gradient-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
   font-size: 40px;
   margin-bottom: 3%;
-  background-image: linear-gradient(
-    90deg,
-    rgb(250, 205, 4),
-    rgb(255, 255, 255)
-  );
+  background-image: linear-gradient(90deg, rgb(250, 205, 4), rgb(255, 255, 255));
   background-clip: text;
   -webkit-background-clip: text; /* Webkit tarayıcıları için gerekli */
   color: transparent;
@@ -37,13 +36,16 @@ h1 {
   margin: 4% 0%;
   backdrop-filter: blur(25px) saturate(180%);
   border: 2px solid rgba(255, 255, 255, 0.125);
-  box-shadow: 2.3px 3.7px 2.3px -3px rgba(0, 0, 0, 0.031),
+  box-shadow:
+    2.3px 3.7px 2.3px -3px rgba(0, 0, 0, 0.031),
     5.9px 9.3px 5.8px -3px rgba(0, 0, 0, 0.044),
     12.1px 19px 11.9px -3px rgba(0, 0, 0, 0.056),
     24.8px 39.1px 24.5px -3px rgba(0, 0, 0, 0.069),
     68px 107px 67px -3px rgba(0, 0, 0, 0.1);
   background-color: rgba(14, 151, 89, 0.75);
   border-radius: 12px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .form-container {
@@ -131,7 +133,8 @@ h1 {
   font-weight: bold;
   font-size: 18px;
   width: 15%;
-  box-shadow: 15.3px 15.7px 10.3px -1px rgba(0, 0, 0, 0.13),
+  box-shadow:
+    15.3px 15.7px 10.3px -1px rgba(0, 0, 0, 0.13),
     98px 100px 138px -1px rgba(0, 0, 0, 0.26);
   padding: 2% 3%;
   border-radius: 10px;
@@ -145,4 +148,63 @@ h1 {
 
 .clock-container {
   display: flex;
+}
+
+/* Responsive */
+
+/* @media (min-width:1800px){
+  .app-container {
+    width: 90%;
+    height: 75vh; 
+  }
+}
+
+@media (max-width: 1200px){
+  .app-container {
+    width: 90%;
+    height: 61vh;  
+  }
+}
+
+@media (max-width:900px){
+  .app-container {
+    width: 90%;
+    height: 50vh;
+  }
+}
+
+@media (max-width:600px) { 
+  .app-container {
+    width: 90%;
+    height: 40vh;  
+  }
+} */
+
+/* Responsive */
+@media screen and (min-width: 112.5rem) {
+  .app-container {
+    width: 75%;
+    height: 65vh;
+  }
+}
+
+@media screen and (max-width: 75rem) {
+  .app-container {
+    width: 90%;
+    height: 61vh;  
+  }
+}
+
+@media screen and (max-width: 56.25rem) {
+  .app-container {
+    width: 90%;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 37.5rem) {
+  .app-container {
+    width: 90%;
+    height: 40vh;  
+  }
 }
