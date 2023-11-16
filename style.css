@@ -243,7 +243,8 @@ h1 {
   }
 
   .weather-data{
-    font-size: 10px;
+    font-size: 8px;
+    flex-wrap: wrap;
   }
 
   .day-container{
